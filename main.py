@@ -26,11 +26,24 @@ def add_to_default(symbols):
        symbols.append(symbol)
        symbol = input("Enter symbol to add: Hit enter to quit")
 
-def edit_default():
-    pass
+def edit_default(symbols):
+    print("Select symbol to delete: ")
+    for i in range(1, len(symbols) + 1):
+       print("{} - {}".format(i, symbols[i-1]))
+    remove = symbols.pop(int(input()) - 1)
+    print("{} removed".format(remove))
 
 def add_list():
-    pass
+    new_list = []
+    print("Enter symbol to add: ")
+    symbol = input().upper()
+    while symbol != '':
+        new_list.append(symbol)
+        symbol = input("Hit enter to Quit")
+    while True:
+        print(get_prices(new_list))
+    #    print("CTRL + C to quit")
+
 
 def get_prices(symbols):
     symbols.sort()
@@ -54,7 +67,7 @@ def main():
         if choice == 3:
             add_to_default(symbols)
         if choice == 4:
-            edit_default()
+            edit_default(symbols)
         if choice == 5:
             add_list()
         if choice == 6:
